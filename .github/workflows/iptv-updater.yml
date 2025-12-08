@@ -1,87 +1,37 @@
-
-name: DeaTHLesS IPTV Updater
+name: Update M3U Playlist
 
 on:
   schedule:
-    # Her gün 6 saatte bir çalış (UTC)
-    - cron: '0 */6 * * *'
-  workflow_dispatch:  # Manuel çalıştırma için
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
   push:
-    branches: [ main ]
-  pull_request:
     branches: [ main ]
 
 jobs:
-  update-iptv:
+  update:
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: write
+
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
-      with:
-        persist-credentials: false
-        fetch-depth: 0
-    
+      uses: actions/checkout@v4
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.10'
-    
-    - name: Install dependencies
+        python-version: '3.x'
+
+    - name: Install requests
+      run: pip install requests
+
+    - name: Generate M3U
+      run: python andro_bot.py
+
+    - name: Commit M3U file
       run: |
-        python -m pip install --upgrade pip
-        pip install requests
-    
-    - name: Run IPTV Proxy Updater
-      id: run-script
-      run: |
-        python deathless_proxy.py
-        
-        # Çıktı dosyasını bul
-        M3U_FILE=$(ls DeaTHlesS_Proxy_*.m3u | head -1)
-        
-        if [ -f "$M3U_FILE" ]; then
-          # Dosyayı ana dizine kopyala
-          cp "$M3U_FILE" deathless_proxy_latest.m3u
-          
-          # Kanal sayısını al
-          CHANNEL_COUNT=$(grep -c '#EXTINF' deathless_proxy_latest.m3u)
-          
-          echo "channel_count=$CHANNEL_COUNT" >> $GITHUB_OUTPUT
-          echo "file_name=deathless_proxy_latest.m3u" >> $GITHUB_OUTPUT
-          echo "m3u_file=deathless_proxy_latest.m3u" >> $GITHUB_OUTPUT
-        fi
-    
-    - name: Configure Git
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-    
-    - name: Commit and push if changed
-      run: |
-        git add deathless_proxy_latest.m3u
-        git diff --cached --quiet || git commit -m "📺 Update IPTV list (${{ steps.run-script.outputs.channel_count }} channels) [skip ci]"
-        git push origin main
-    
-    - name: Create summary
-      run: |
-        echo "## 🎯 IPTV Update Results" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "✅ **Successfully updated IPTV list!**" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "📊 **Channels:** ${{ steps.run-script.outputs.channel_count }}" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "📁 **File:** [${{ steps.run-script.outputs.m3u_file }}](https://raw.githubusercontent.com/${{ github.repository }}/main/${{ steps.run-script.outputs.m3u_file }})" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "⏰ **Last Update:** $(date '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "🔗 **Direct M3U Link:**" >> $GITHUB_STEP_SUMMARY
-        echo "```" >> $GITHUB_STEP_SUMMARY
-        echo "https://raw.githubusercontent.com/${{ github.repository }}/main/deathless_proxy_latest.m3u" >> $GITHUB_STEP_SUMMARY
-        echo "```" >> $GITHUB_STEP_SUMMARY
-    
-    - name: Upload M3U file as artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: iptv-playlist
-        path: deathless_proxy_latest.m3u
+        git config user.name "GitHub Action"
+        git config user.email "action@github.com"
+        git add DeaTHlesS-Androiptv.m3u
+        git commit -m "Update M3U playlist" || exit 0
+        git push
