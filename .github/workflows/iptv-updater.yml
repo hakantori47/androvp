@@ -1,37 +1,156 @@
-name: Update M3U Playlist
+name: DeaTHLesS IPTV Updater
 
 on:
   schedule:
-    - cron: '*/10 * * * *'
-  workflow_dispatch:
+    # Her gün 6 saatte bir çalış (UTC)
+    - cron: '0 */6 * * *'
+  workflow_dispatch:  # Manuel çalıştırma için
   push:
+    branches: [ main ]
+  pull_request:
     branches: [ main ]
 
 jobs:
-  update:
+  update-iptv:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
+    
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
-
+      uses: actions/checkout@v3
+      with:
+        persist-credentials: false
+        fetch-depth: 0
+    
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.x'
-
-    - name: Install requests
-      run: pip install requests
-
-    - name: Generate M3U
-      run: python andro_bot.py
-
-    - name: Commit M3U file
+        python-version: '3.10'
+    
+    - name: Install dependencies
       run: |
-        git config user.name "GitHub Action"
-        git config user.email "action@github.com"
-        git add DeaTHlesS-Androiptv.m3u
-        git commit -m "Update M3U playlist" || exit 0
-        git push
+        python -m pip install --upgrade pip
+        pip install requests
+    
+    - name: List files (debug)
+      run: ls -la
+    
+    - name: Check Python script exists
+      run: |
+        if [ -f "deathless_proxy.py" ]; then
+          echo "✅ deathless_proxy.py found"
+        else
+          echo "❌ deathless_proxy.py not found"
+          ls *.py
+        fi
+    
+    - name: Run IPTV Proxy Updater
+      id: run-script
+      run: |
+        python deathless_proxy.py
+        
+        # Çıktı dosyasını bul
+        echo "Looking for M3U files..."
+        ls -la *.m3u 2>/dev/null || echo "No M3U files found yet"
+        
+        # Tüm M3U dosyalarını bul
+        M3U_FILES=$(ls DeaTHlesS_Proxy_*.m3u 2>/dev/null || true)
+        
+        if [ -n "$M3U_FILES" ]; then
+          # En yeni dosyayı al
+          LATEST_FILE=$(ls -t DeaTHlesS_Proxy_*.m3u | head -1)
+          echo "Latest M3U file: $LATEST_FILE"
+          
+          # Dosyayı ana dizine kopyala
+          cp "$LATEST_FILE" deathless_proxy_latest.m3u
+          
+          # Kanal sayısını al
+          CHANNEL_COUNT=$(grep -c '#EXTINF' deathless_proxy_latest.m3u || echo "0")
+          
+          echo "channel_count=$CHANNEL_COUNT" >> $GITHUB_OUTPUT
+          echo "file_name=deathless_proxy_latest.m3u" >> $GITHUB_OUTPUT
+          echo "m3u_file=deathless_proxy_latest.m3u" >> $GITHUB_OUTPUT
+          
+          echo "✅ Successfully processed $LATEST_FILE with $CHANNEL_COUNT channels"
+        else
+          # Dosya yoksa yeni oluştur
+          echo "⚠️ No M3U files found, running script in output mode..."
+          python deathless_proxy.py
+          
+          # Tekrar kontrol et
+          if [ -f "DeaTHlesS_Proxy_"*.m3u ]; then
+            LATEST_FILE=$(ls -t DeaTHlesS_Proxy_*.m3u | head -1)
+            cp "$LATEST_FILE" deathless_proxy_latest.m3u
+            CHANNEL_COUNT=$(grep -c '#EXTINF' deathless_proxy_latest.m3u)
+            
+            echo "channel_count=$CHANNEL_COUNT" >> $GITHUB_OUTPUT
+            echo "file_name=deathless_proxy_latest.m3u" >> $GITHUB_OUTPUT
+            echo "m3u_file=deathless_proxy_latest.m3u" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Failed to generate M3U file"
+            echo "channel_count=0" >> $GITHUB_OUTPUT
+          fi
+        fi
+    
+    - name: Check if M3U file exists
+      run: |
+        if [ -f "deathless_proxy_latest.m3u" ]; then
+          echo "✅ M3U file exists"
+          ls -la deathless_proxy_latest.m3u
+          echo "First few lines:"
+          head -10 deathless_proxy_latest.m3u
+        else
+          echo "❌ M3U file not found"
+          # Create empty file as fallback
+          echo "#EXTM3U" > deathless_proxy_latest.m3u
+          echo "# No channels found" >> deathless_proxy_latest.m3u
+        fi
+    
+    - name: Configure Git
+      if: steps.run-script.outputs.channel_count != '0'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+    
+    - name: Commit and push if changed
+      if: steps.run-script.outputs.channel_count != '0'
+      run: |
+        git add deathless_proxy_latest.m3u
+        git status
+        git diff --cached --quiet || (git commit -m "📺 Update IPTV list (${{ steps.run-script.outputs.channel_count }} channels) [skip ci]" && git push origin main)
+    
+    - name: Create summary
+      run: |
+        echo "## 🎯 IPTV Update Results" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.run-script.outputs.channel_count }}" != "0" ]; then
+          echo "✅ **Successfully updated IPTV list!**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📊 **Channels:** ${{ steps.run-script.outputs.channel_count }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📁 **File:** [${{ steps.run-script.outputs.m3u_file }}](https://raw.githubusercontent.com/${{ github.repository }}/main/${{ steps.run-script.outputs.m3u_file }})" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "⏰ **Last Update:** $(date '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 **Direct M3U Link:**" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "https://raw.githubusercontent.com/${{ github.repository }}/main/deathless_proxy_latest.m3u" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "⚠️ **No channels found!**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Possible reasons:" >> $GITHUB_STEP_SUMMARY
+          echo "- All proxies are blocked" >> $GITHUB_STEP_SUMMARY  
+          echo "- Source domains are down" >> $GITHUB_STEP_SUMMARY
+          echo "- Network issues" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Try running manually to debug." >> $GITHUB_STEP_SUMMARY
+        fi
+    
+    - name: Upload M3U file as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: iptv-playlist
+        path: deathless_proxy_latest.m3u
+        retention-days: 7
+      
