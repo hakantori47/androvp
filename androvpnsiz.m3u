@@ -1,139 +1,37 @@
 #EXTM3U
-# Generated with Proxy Mode
-# Proxies used: 4
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:beIN Sport 1 HD
+# DeaTHLesS IPTV - GitHub Actions
+# Generated: 2025-12-09 06:54:02
+# Base URL: https://andro.226503.xyz/checklist/
+
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",beIN Sport 1 HD
 https://andro.226503.xyz/checklist/androstreamlivebs1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tivibu Sport HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Tivibu Sport HD
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 2 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",beIN Sport 2 HD
+https://andro.226503.xyz/checklist/androstreamlivebs2.m3u8
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 3 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",beIN Sport 3 HD
+https://andro.226503.xyz/checklist/androstreamlivebs3.m3u8
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 4 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",beIN Sport 4 HD
+https://andro.226503.xyz/checklist/androstreamlivebs4.m3u8
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 5 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",beIN Sport 5 HD
+https://andro.226503.xyz/checklist/androstreamlivebs5.m3u8
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:S Sport 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",S Sport 1 HD
+https://andro.226503.xyz/checklist/androstreamlivess1.m3u8
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:S Sport 2 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",S Sport 2 HD
+https://andro.226503.xyz/checklist/androstreamlivess2.m3u8
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tivibu Sport HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Tivibu Sport HD
 https://andro.226503.xyz/checklist/androstreamlivets.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport Max 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:beIN Sport Max 1 HD
-https://andro.226503.xyz/checklist/androstreamlivebsm1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tivibu Sport 2 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Tivibu Sport 2 HD
-https://andro.226503.xyz/checklist/androstreamlivets2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport Max 2 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:beIN Sport Max 2 HD
-https://andro.226503.xyz/checklist/androstreamlivebsm2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tivibu Sport 3 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Tivibu Sport 3 HD
-https://andro.226503.xyz/checklist/androstreamlivets3.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 4 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:beIN Sport 4 HD
-https://andro.226503.xyz/checklist/androstreamlivebs4.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 3 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:beIN Sport 3 HD
-https://andro.226503.xyz/checklist/androstreamlivebs3.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:S Sport 2 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:S Sport 2 HD
-https://andro.226503.xyz/checklist/androstreamlivess2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 2 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:beIN Sport 2 HD
-https://andro.226503.xyz/checklist/androstreamlivebs2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 5 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:beIN Sport 5 HD
-https://andro.226503.xyz/checklist/androstreamlivebs5.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Smart Sport 2 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Smart Sport 2 HD
-https://andro.226503.xyz/checklist/androstreamlivesm2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:S Sport 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:S Sport 1 HD
-https://andro.226503.xyz/checklist/androstreamlivess1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tivibu Sport 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Tivibu Sport 1 HD
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tivibu Sport 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Tivibu Sport 1 HD
 https://andro.226503.xyz/checklist/androstreamlivets1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Euro Sport 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Euro Sport 1 HD
-https://andro.226503.xyz/checklist/androstreamlivees1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tivibu Sport 4 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Tivibu Sport 4 HD
-https://andro.226503.xyz/checklist/androstreamlivets4.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Smart Sport 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Smart Sport 1 HD
-https://andro.226503.xyz/checklist/androstreamlivesm1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Euro Sport 2 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Euro Sport 2 HD
-https://andro.226503.xyz/checklist/androstreamlivees2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tabii HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Tabii HD
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tivibu Sport 2 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Tivibu Sport 2 HD
+https://andro.226503.xyz/checklist/androstreamlivets2.m3u8
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tabii HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Tabii HD
 https://andro.226503.xyz/checklist/androstreamlivetb.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tabii 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Tabii 1 HD
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tabii 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Tabii 1 HD
 https://andro.226503.xyz/checklist/androstreamlivetb1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tabii 2 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Tabii 2 HD
-https://andro.226503.xyz/checklist/androstreamlivetb2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tabii 3 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Tabii 3 HD
-https://andro.226503.xyz/checklist/androstreamlivetb3.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tabii 4 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Tabii 4 HD
-https://andro.226503.xyz/checklist/androstreamlivetb4.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tabii 5 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Tabii 5 HD
-https://andro.226503.xyz/checklist/androstreamlivetb5.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Exxen 4 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Exxen 4 HD
-https://andro.226503.xyz/checklist/androstreamliveexn4.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Exxen HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Exxen HD
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Exxen HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Exxen HD
 https://andro.226503.xyz/checklist/androstreamliveexn.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Exxen 2 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Exxen 2 HD
-https://andro.226503.xyz/checklist/androstreamliveexn2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Facebook Tivibu Sport" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Facebook Tivibu Sport
-https://andro.226503.xyz/checklist/facebooklivets.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Exxen 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Exxen 1 HD
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Exxen 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Exxen 1 HD
 https://andro.226503.xyz/checklist/androstreamliveexn1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Exxen 5 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Exxen 5 HD
-https://andro.226503.xyz/checklist/androstreamliveexn5.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Facebook beIN Sport 2" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Facebook beIN Sport 2
-https://andro.226503.xyz/checklist/facebooklivebs2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Facebook S Sport 1" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Facebook S Sport 1
-https://andro.226503.xyz/checklist/facebooklivess1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Facebook beIN Sport 1" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Facebook beIN Sport 1
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Facebook beIN Sport 1" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Facebook beIN Sport 1
 https://andro.226503.xyz/checklist/facebooklivebs1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Exxen 3 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Exxen 3 HD
-https://andro.226503.xyz/checklist/androstreamliveexn3.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:bs3" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:bs3
-https://andro.226503.xyz/checklist/androstreamlivebs3.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:bs5" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:bs5
-https://andro.226503.xyz/checklist/androstreamlivebs5.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:bs4" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:bs4
-https://andro.226503.xyz/checklist/androstreamlivebs4.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:bs2" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:bs2
-https://andro.226503.xyz/checklist/androstreamlivebs2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:ss1" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:ss1
-https://andro.226503.xyz/checklist/androstreamlivess1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:ss2" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:ss2
-https://andro.226503.xyz/checklist/androstreamlivess2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:ts1" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:ts1
-https://andro.226503.xyz/checklist/androstreamlivets1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:ts3" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:ts3
-https://andro.226503.xyz/checklist/androstreamlivets3.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:ts4" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:ts4
-https://andro.226503.xyz/checklist/androstreamlivets4.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:bs1" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:bs1
-https://andro.226503.xyz/checklist/androstreamlivebs1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:tb1" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:tb1
-https://andro.226503.xyz/checklist/androstreamlivetb1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:tb2" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:tb2
-https://andro.226503.xyz/checklist/androstreamlivetb2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:tb3" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:tb3
-https://andro.226503.xyz/checklist/androstreamlivetb3.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:tb4" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:tb4
-https://andro.226503.xyz/checklist/androstreamlivetb4.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:tb5" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:tb5
-https://andro.226503.xyz/checklist/androstreamlivetb5.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:ts2" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:ts2
-https://andro.226503.xyz/checklist/androstreamlivets2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:tb6" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:tb6
-https://andro.226503.xyz/checklist/androstreamlivetb6.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:tb7" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:tb7
-https://andro.226503.xyz/checklist/androstreamlivetb7.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:tb8" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:tb8
-https://andro.226503.xyz/checklist/androstreamlivetb8.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:exn1" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:exn1
-https://andro.226503.xyz/checklist/androstreamliveexn1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:exn2" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:exn2
-https://andro.226503.xyz/checklist/androstreamliveexn2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:exn3" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:exn3
-https://andro.226503.xyz/checklist/androstreamliveexn3.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:exn4" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:exn4
-https://andro.226503.xyz/checklist/androstreamliveexn4.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:exn5" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:exn5
-https://andro.226503.xyz/checklist/androstreamliveexn5.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Facebook ss1" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Facebook ss1
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Facebook S Sport 1" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Facebook S Sport 1
 https://andro.226503.xyz/checklist/facebooklivess1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:exn6" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:exn6
-https://andro.226503.xyz/checklist/androstreamliveexn6.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Facebook bs2" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Facebook bs2
-https://andro.226503.xyz/checklist/facebooklivebs2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Facebook bs1" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Facebook bs1
-https://andro.226503.xyz/checklist/facebooklivebs1.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:exn7" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:exn7
-https://andro.226503.xyz/checklist/androstreamliveexn7.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:exn8" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:exn8
-https://andro.226503.xyz/checklist/androstreamliveexn8.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Facebook bs3" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Facebook bs3
-https://andro.226503.xyz/checklist/facebooklivebs3.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Facebook ss2" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Facebook ss2
-https://andro.226503.xyz/checklist/facebooklivess2.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Facebook bs4" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Facebook bs4
-https://andro.226503.xyz/checklist/facebooklivebs4.m3u8
-#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Facebook bs5" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE DEATHLESS",TR:Facebook bs5
-https://andro.226503.xyz/checklist/facebooklivebs5.m3u8
