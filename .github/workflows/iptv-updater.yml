@@ -32,6 +32,6 @@ jobs:
       run: |
         git config user.name "GitHub Action"
         git config user.email "action@github.com"
-        git add DeaTHlesS-Androiptv.m3u
+        git add androvpnsiz.m3u
         git commit -m "Update M3U playlist" || exit 0
         git push
