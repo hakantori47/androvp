@@ -4,6 +4,7 @@ import json
 import time
 import concurrent.futures
 from urllib.parse import quote
+import sys
 
 def test_proxy_speed(proxy_url, test_url="https://httpbin.org/ip", timeout=3):
     """Proxy hızını test et"""
@@ -16,79 +17,61 @@ def test_proxy_speed(proxy_url, test_url="https://httpbin.org/ip", timeout=3):
             return proxy_url, speed, True
     except:
         pass
-    return proxy_url, 10, False  # Yüksek süre = yavaş
+    return proxy_url, 10, False
 
 def get_fastest_proxies():
-    """Hızlı proxy'leri bul"""
-    print("⚡ En hızlı proxy'ler aranıyor...")
+    """Hızlı proxy'leri bul - GitHub için optimize edilmiş"""
+    print("⚡ GitHub Actions için proxy test ediliyor...")
     
+    # GitHub Actions için özel proxy listesi
     proxy_list = [
-        # Türk proxy'leri (daha hızlı)
-        "http://proxy1.wifispeed.org:8080",
-        "http://proxy2.wifispeed.org:8080",
-        "http://proxy.tr:8080",
-        "http://185.199.229.156:7492",
-        "http://185.199.228.220:7300",
-        "http://185.199.231.45:8382",
-        
-        # Cloudflare Workers (CORS bypass)
+        # Cloudflare Workers (GitHub'ta çalışır)
         "https://corsproxy.io/?",
         "https://api.codetabs.com/v1/proxy?quest=",
         "https://proxy.ponelat.workers.dev/",
         "https://cors.gerhut.workers.dev/?",
         
-        # Public proxy'ler
-        "http://45.77.56.113:3128",
-        "http://138.197.157.32:3128",
-        "http://167.71.5.83:3128",
-        "http://68.183.221.156:3128",
-        
-        # Free proxy pool
+        # Güvenilir public proxy'ler
         "http://20.210.113.32:80",
         "http://20.206.106.192:80",
-        "http://20.24.43.214:8123",
-        "http://103.152.112.145:80",
         
-        # Türkiye proxy'leri (yeni)
+        # Türkiye proxy'leri
         "http://88.255.102.10:8080",
         "http://176.235.99.12:9090",
-        "http://85.105.25.165:8080",
-        "http://212.252.126.54:8080",
         "http://95.0.219.201:8080",
     ]
     
-    # Workers proxy'leri (özel format)
+    # Workers proxy'leri
     workers = [
         ("CF-Proxy", "https://withered-shape-3305.vadimkantorov.workers.dev/?"),
         ("Rapid-Proxy", "https://rapid-wave-c8e3.redfor14314.workers.dev/"),
         ("Cors-Free", "https://proxy.freecdn.workers.dev/?url="),
         ("Hello-World", "https://hello-world-aged-resonance-fc8f.bokaflix.workers.dev/?apiUrl="),
+        ("AllOrigins", "https://api.allorigins.win/raw?url="),  # Yeni ekle
     ]
     
     fast_proxies = []
     
-    # Test et (paralel)
-    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-        futures = []
-        for proxy in proxy_list:
-            futures.append(executor.submit(test_proxy_speed, proxy))
-        
-        for future in concurrent.futures.as_completed(futures):
-            proxy, speed, working = future.result()
-            if working and speed < 2:  # 2 saniyeden hızlı olanlar
-                fast_proxies.append((proxy, speed))
-                print(f"   ✅ {proxy.split('//')[-1].split(':')[0]} - {speed:.2f}s")
-    
-    # Workers'ları ekle (genelde çalışıyor)
+    # Sadece workers proxy'lerini kullan (GitHub'ta daha güvenilir)
     for name, url in workers:
-        fast_proxies.append((url, 0.5))
-        print(f"   ✅ {name} - 0.50s (Worker)")
+        fast_proxies.append(url)
+        print(f"   ✅ {name} eklendi")
     
-    # Hızına göre sırala
-    fast_proxies.sort(key=lambda x: x[1])
+    # GitHub Actions ortam kontrolü
+    if os.environ.get('GITHUB_ACTIONS') == 'true':
+        print("🚀 GitHub Actions ortamında çalışıyor")
+        # GitHub'ta daha fazla workers ekleyelim
+        extra_workers = [
+            "https://cors-anywhere.herokuapp.com/",
+            "https://thingproxy.freeboard.io/fetch/",
+            "https://yacdn.org/proxy/",
+        ]
+        fast_proxies.extend(extra_workers)
     
-    print(f"📊 {len(fast_proxies)} hızlı proxy bulundu")
-    return [p[0] for p in fast_proxies[:10]]  # İlk 10'u al
+    # Direkt erişimi de ekle
+    fast_proxies.append("direct")
+    
+    return fast_proxies[:10]
 
 def check_url_with_proxy(url, proxies, timeout=5):
     """URL'i proxy ile kontrol et"""
@@ -102,9 +85,18 @@ def check_url_with_proxy(url, proxies, timeout=5):
     
     # Proxy'lerle dene
     for proxy in proxies:
+        if proxy == "direct":
+            continue
+            
         try:
-            if proxy.endswith("?") or "?url=" in proxy or "?quest=" in proxy or "apiUrl=" in proxy:
+            if proxy.endswith("?") or "?url=" in proxy or "?quest=" in proxy or "apiUrl=" in proxy or "/raw?url=" in proxy:
                 # Worker proxy formatı
+                if "allorigins.win" in proxy:
+                    proxy_url = f"{proxy}{quote(url, safe='')}"
+                else:
+                    proxy_url = f"{proxy}{url}"
+            elif "/proxy/" in proxy or "/fetch/" in proxy:
+                # Diğer proxy formatları
                 proxy_url = f"{proxy}{url}"
             elif proxy.startswith("http://") or proxy.startswith("https://"):
                 # Normal proxy formatı
@@ -120,275 +112,186 @@ def check_url_with_proxy(url, proxies, timeout=5):
             response = requests.head(proxy_url, timeout=timeout)
             if response.status_code == 200:
                 return proxy_url, proxy.split("//")[-1].split("/")[0]
-        except:
+        except Exception as e:
             continue
     
     return None, None
 
-def get_DeaTHLesS_streams():
-    """DeaTHLesS IPTV stream'lerini al (VPN gerektirmeden)"""
-    
-    print("=" * 60)
-    print("🚀 DeaTHLesS IPTV Bot - Proxy Modu")
-    print("=" * 60)
-    
-    # 1. Hızlı proxy'leri bul
-    fast_proxies = get_fastest_proxies()
-    
-    if not fast_proxies:
-        print("❌ Çalışan proxy bulunamadı!")
-        return ""
-    
-    # 2. Aktif domain ara
+def get_active_base_url(proxies):
+    """Aktif base URL'yi bul"""
     print("\n🔍 Aktif domain aranıyor...")
     
-    domains_to_try = [
+    # Öncelikli domainler
+    priority_domains = [
         "https://andro.226503.xyz/checklist/",
         "https://androiptv.fun/checklist/",
         "https://birazcikspor.xyz/checklist/",
-        "https://birazcikspor42.xyz/checklist/",
-        "https://birazcikspor43.xyz/checklist/",
         "https://androstream.live/checklist/",
-        "https://deathlessiptv.com/checklist/",
     ]
     
-    # Domain keşfi
-    for i in range(1, 50):
-        domains_to_try.append(f"https://birazcikspor{i}.xyz/checklist/")
+    test_channels = [
+        "androstreamlivebs1",
+        "androstreamlivess1",
+        "androstreamlivets"
+    ]
     
-    active_base = None
+    for domain in priority_domains:
+        for channel in test_channels:
+            test_url = f"{domain}{channel}.m3u8"
+            stream_url, used_proxy = check_url_with_proxy(test_url, proxies, timeout=3)
+            if stream_url:
+                print(f"✅ Aktif domain: {domain} (via {used_proxy})")
+                return domain
     
-    for domain in domains_to_try:
-        for proxy in fast_proxies:
-            try:
-                if proxy.endswith("?") or "?url=" in proxy:
-                    test_url = f"{proxy}{domain}androstreamlivebs1.m3u8"
+    # Alternatif domainleri tarama
+    print("⚠  Öncelikli domainler çalışmıyor, alternatifler taranıyor...")
+    
+    for i in range(1, 30):
+        domain = f"https://birazcikspor{i}.xyz/checklist/"
+        test_url = f"{domain}androstreamlivebs1.m3u8"
+        try:
+            response = requests.head(test_url, timeout=2)
+            if response.status_code == 200:
+                print(f"✅ Alternatif domain: {domain}")
+                return domain
+        except:
+            continue
+    
+    # Son çare
+    default_domain = "https://andro.226503.xyz/checklist/"
+    print(f"⚠  Varsayılan domain: {default_domain}")
+    return default_domain
+
+def get_DeaTHLesS_streams():
+    """DeaTHLesS IPTV stream'lerini al"""
+    
+    print("=" * 60)
+    print("🚀 DeaTHLesS IPTV Bot - GitHub Actions Optimize")
+    print("=" * 60)
+    
+    # GitHub Actions kontrolü
+    if os.environ.get('GITHUB_ACTIONS') == 'true':
+        print("📦 GitHub Actions ortamında çalışıyor")
+        print("🔧 Proxy ayarları optimize ediliyor...")
+    
+    # 1. Proxy'leri al
+    proxies = get_fastest_proxies()
+    print(f"📊 Kullanılacak proxy sayısı: {len(proxies)}")
+    
+    # 2. Aktif domain'i bul
+    base_url = get_active_base_url(proxies)
+    
+    # 3. Kanal listesi oluştur
+    print(f"\n📡 Kanal listesi oluşturuluyor: {base_url}")
+    
+    channels = get_channel_list()
+    
+    m3u_content = "#EXTM3U\n"
+    m3u_content += "# DeaTHLesS IPTV - GitHub Actions\n"
+    m3u_content += f"# Generated: {time.strftime('%Y-%m-%d %H:%M:%S')}\n"
+    m3u_content += f"# Base URL: {base_url}\n\n"
+    
+    successful = 0
+    total = len(channels)
+    
+    for name, channel_id in channels:
+        url = f"{base_url}{channel_id}.m3u8"
+        stream_url, proxy_used = check_url_with_proxy(url, proxies)
+        
+        if stream_url:
+            logo_url = "https://i.hizliresim.com/8xzjgqv.jpg"
+            m3u_content += f'#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:{name}" tvg-logo="{logo_url}" group-title="TURKIYE",{name}\n'
+            
+            # GitHub Actions'ta farklı format
+            if os.environ.get('GITHUB_ACTIONS') == 'true':
+                # Direkt URL veya basit proxy kullan
+                if proxy_used and proxy_used != "direct":
+                    m3u_content += f"{stream_url}\n"
                 else:
-                    test_url = f"{domain}androstreamlivebs1.m3u8"
-                
-                response = requests.head(test_url, timeout=3)
-                if response.status_code == 200:
-                    active_base = domain
-                    print(f"✅ Aktif domain: {domain}")
-                    break
-            except:
-                continue
-        if active_base:
-            break
+                    m3u_content += f"{url}\n"
+            else:
+                m3u_content += f"{stream_url}\n"
+            
+            successful += 1
+            print(f"✅ {name}")
+        else:
+            print(f"❌ {name}")
     
-    if not active_base:
-        # Son çare: bilinen domain
-        active_base = "https://andro.226503.xyz/checklist/"
-        print(f"⚠  Varsayılan domain kullanılıyor: {active_base}")
+    print(f"\n📊 Sonuç: {successful}/{total} kanal bulundu")
     
-    # 3. Kanal listesini oluştur
-    print(f"\n📡 Kanal listesi oluşturuluyor...")
-    
-    m3u_content = create_m3u_with_proxies(active_base, fast_proxies)
+    # Çok az kanal bulunduysa, alternatif yaklaşım dene
+    if successful < 5:
+        print("\n⚠  Çok az kanal bulundu, alternatif yöntem deneniyor...")
+        alt_content = try_alternative_method(base_url)
+        if alt_content:
+            m3u_content += alt_content
+            print("✅ Alternatif yöntemle kanallar eklendi")
     
     return m3u_content
 
-def create_m3u_with_proxies(base_url, proxies):
-    """Proxy'lerle M3U içeriği oluştur"""
-    m3u_content = ""
-    
-    # Kanal listesi
-    channels = [
-        # beIN Sports
+def get_channel_list():
+    """Kanal listesini döndür"""
+    return [
         ["beIN Sport 1 HD", "androstreamlivebs1"],
         ["beIN Sport 2 HD", "androstreamlivebs2"],
         ["beIN Sport 3 HD", "androstreamlivebs3"],
         ["beIN Sport 4 HD", "androstreamlivebs4"],
         ["beIN Sport 5 HD", "androstreamlivebs5"],
-        ["beIN Sport Max 1 HD", "androstreamlivebsm1"],
-        ["beIN Sport Max 2 HD", "androstreamlivebsm2"],
-        
-        # S Sport
         ["S Sport 1 HD", "androstreamlivess1"],
         ["S Sport 2 HD", "androstreamlivess2"],
-        ["S Sport 3 HD", "androstreamlivess3"],
-        ["S Sport 4 HD", "androstreamlivess4"],
-        
-        # Tivibu Sport
         ["Tivibu Sport HD", "androstreamlivets"],
         ["Tivibu Sport 1 HD", "androstreamlivets1"],
         ["Tivibu Sport 2 HD", "androstreamlivets2"],
-        ["Tivibu Sport 3 HD", "androstreamlivets3"],
-        ["Tivibu Sport 4 HD", "androstreamlivets4"],
-        
-        # Smart Sport
-        ["Smart Sport 1 HD", "androstreamlivesm1"],
-        ["Smart Sport 2 HD", "androstreamlivesm2"],
-        ["Smart Sport 3 HD", "androstreamlivesm3"],
-        
-        # Euro Sport
-        ["Euro Sport 1 HD", "androstreamlivees1"],
-        ["Euro Sport 2 HD", "androstreamlivees2"],
-        
-        # Tabii
         ["Tabii HD", "androstreamlivetb"],
         ["Tabii 1 HD", "androstreamlivetb1"],
-        ["Tabii 2 HD", "androstreamlivetb2"],
-        ["Tabii 3 HD", "androstreamlivetb3"],
-        ["Tabii 4 HD", "androstreamlivetb4"],
-        ["Tabii 5 HD", "androstreamlivetb5"],
-        
-        # Exxen
         ["Exxen HD", "androstreamliveexn"],
         ["Exxen 1 HD", "androstreamliveexn1"],
-        ["Exxen 2 HD", "androstreamliveexn2"],
-        ["Exxen 3 HD", "androstreamliveexn3"],
-        ["Exxen 4 HD", "androstreamliveexn4"],
-        ["Exxen 5 HD", "androstreamliveexn5"],
-        
-        # Facebook Streams
         ["Facebook beIN Sport 1", "facebooklivebs1"],
-        ["Facebook beIN Sport 2", "facebooklivebs2"],
         ["Facebook S Sport 1", "facebooklivess1"],
-        ["Facebook Tivibu Sport", "facebooklivets"],
+    ]
+
+def try_alternative_method(base_url):
+    """Alternatif yöntemle kanal bul"""
+    content = ""
+    
+    # Basit bir yaklaşım: tüm olası kanalları ekle
+    channels = [
+        ("beIN Sport 1", "androstreamlivebs1"),
+        ("beIN Sport 2", "androstreamlivebs2"),
+        ("S Sport 1", "androstreamlivess1"),
+        ("Tivibu Sport", "androstreamlivets"),
     ]
     
-    successful_channels = []
-    logo_url = "https://i.hizliresim.com/8xzjgqv.jpg"
-    
-    print(f"📊 {len(channels)} kanal test ediliyor...")
-    print("-" * 40)
-    
-    # Paralel kanal kontrolü
-    def check_channel(channel):
-        name, channel_id = channel
+    for name, channel_id in channels:
         url = f"{base_url}{channel_id}.m3u8"
-        
-        stream_url, used_proxy = check_url_with_proxy(url, proxies)
-        
-        if stream_url:
-            extinf = f'#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:{name}" tvg-logo="{logo_url}" group-title="TURKIYE DEATHLESS",TR:{name}\n'
-            return name, extinf + stream_url + "\n", True
-        return name, "", False
+        content += f'#EXTINF:-1 tvg-id="sport.tr" tvg-name="{name}",{name}\n'
+        content += f"{url}\n"
     
-    # Thread pool ile hızlı kontrol
-    with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
-        future_to_channel = {executor.submit(check_channel, channel): channel for channel in channels}
-        
-        for future in concurrent.futures.as_completed(future_to_channel):
-            channel_name, content, success = future.result()
-            if success:
-                m3u_content += content
-                successful_channels.append(channel_name)
-                print(f"✅ {channel_name}")
-            else:
-                print(f"❌ {channel_name}")
-    
-    print("-" * 40)
-    print(f"📊 Başarılı: {len(successful_channels)}/{len(channels)} kanal")
-    
-    # 4. Ek kanalları keşfet
-    if successful_channels:
-        print("\n🔍 Ek kanallar taranıyor...")
-        additional = discover_additional_channels_parallel(base_url, proxies, logo_url)
-        if additional:
-            m3u_content += additional
-            added_count = additional.count('#EXTINF')
-            print(f"➕ {added_count} ek kanal bulundu")
-            successful_channels.append(f"+{added_count} ek kanal")
-    
-    # 5. Proxy bilgilerini ekle (yorum olarak)
-    m3u_content = f"#EXTM3U\n# Generated with Proxy Mode\n# Proxies used: {len(proxies)}\n" + m3u_content
-    
-    return m3u_content
-
-def discover_additional_channels_parallel(base_url, proxies, logo_url):
-    """Paralel ek kanal keşfi"""
-    additional_content = ""
-    
-    # Test edilecek pattern'ler
-    patterns_to_test = []
-    
-    # beIN Sports (1-10)
-    for i in range(1, 11):
-        patterns_to_test.append(f"androstreamlivebs{i}")
-    
-    # S Sport (1-5)
-    for i in range(1, 6):
-        patterns_to_test.append(f"androstreamlivess{i}")
-    
-    # Tivibu Sport (1-6)
-    for i in range(1, 7):
-        patterns_to_test.append(f"androstreamlivets{i}")
-    
-    # Tabii (1-10)
-    for i in range(1, 11):
-        patterns_to_test.append(f"androstreamlivetb{i}")
-    
-    # Exxen (1-10)
-    for i in range(1, 11):
-        patterns_to_test.append(f"androstreamliveexn{i}")
-    
-    # Facebook
-    for i in range(1, 6):
-        patterns_to_test.append(f"facebooklivebs{i}")
-        patterns_to_test.append(f"facebooklivess{i}")
-    
-    discovered = []
-    
-    def test_pattern(pattern):
-        url = f"{base_url}{pattern}.m3u8"
-        stream_url, _ = check_url_with_proxy(url, proxies, timeout=3)
-        return pattern, stream_url
-    
-    # Paralel test
-    with concurrent.futures.ThreadPoolExecutor(max_workers=15) as executor:
-        futures = {executor.submit(test_pattern, pattern): pattern for pattern in patterns_to_test}
-        
-        for future in concurrent.futures.as_completed(futures):
-            pattern, stream_url = future.result()
-            if stream_url:
-                channel_name = pattern.replace("androstreamlive", "").replace("facebooklive", "Facebook ")
-                additional_content += f'#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:{channel_name}" tvg-logo="{logo_url}" group-title="TURKIYE DEATHLESS",TR:{channel_name}\n'
-                additional_content += f"{stream_url}\n"
-                discovered.append(pattern)
-    
-    if discovered:
-        print(f"   🎯 {len(discovered)} yeni kanal keşfedildi")
-    
-    return additional_content
+    return content
 
 def save_m3u_file(content):
-    """M3U dosyasını kaydet - Sabit androvpnsiz.m3u olarak"""
+    """M3U dosyasını kaydet"""
     try:
-        output_dir = "."
         file_name = "androvpnsiz.m3u"
-        file_path = os.path.join(output_dir, file_name)
         
-        with open(file_path, "w", encoding="utf-8") as f:
+        with open(file_name, "w", encoding="utf-8") as f:
             f.write(content)
         
-        # Kanal sayısını hesapla
         channel_count = content.count('#EXTINF')
         
         print("\n" + "=" * 60)
         print("✅ İŞLEM TAMAMLANDI!")
         print("=" * 60)
-        print(f"📂 Dosya: {file_path}")
+        print(f"📂 Dosya: {file_name}")
         print(f"📊 Toplam Kanal: {channel_count}")
-        print(f"💾 Boyut: {os.path.getsize(file_path)} bytes")
+        print(f"💾 Boyut: {len(content.encode('utf-8'))} bytes")
         
-        # İlk 3 kanalı göster
-        print("\n📺 Örnek Kanallar:")
-        lines = content.split('\n')
-        count = 0
-        for line in lines:
-            if line.startswith('#EXTINF') and count < 3:
-                name = line.split(',')[-1] if ',' in line else line
-                print(f"   • {name}")
-                count += 1
+        # GitHub Actions için ek bilgi
+        if os.environ.get('GITHUB_ACTIONS') == 'true':
+            print("\n🚀 GitHub Actions: M3U dosyası oluşturuldu")
+            print("📤 Otomatik commit yapılacak")
         
-        # Proxy bilgisi
-        proxy_lines = [line for line in lines if line.startswith('#') and 'Proxy' in line]
-        if proxy_lines:
-            print(f"\n🔗 {proxy_lines[0]}")
-        
-        return file_path
+        return file_name
         
     except Exception as e:
         print(f"❌ Dosya kaydetme hatası: {e}")
@@ -396,24 +299,31 @@ def save_m3u_file(content):
 
 if __name__ == "__main__":
     try:
-        # VPN olmadan çalışacak proxy modu
+        print(f"Python {sys.version}")
+        print(f"Çalışma dizini: {os.getcwd()}")
+        
         m3u_data = get_DeaTHLesS_streams()
         
         if m3u_data and m3u_data.count('#EXTINF') > 0:
             saved_file = save_m3u_file(m3u_data)
             
-            print("\n🚀 Proxy modu başarıyla çalıştı!")
-            print(f"📤 M3U dosyası: {saved_file}")
+            # Örnek çıktı
+            print("\n📋 İlk 5 kanal:")
+            lines = m3u_data.split('\n')
+            count = 0
+            for line in lines:
+                if line.startswith('#EXTINF') and count < 5:
+                    name = line.split(',')[-1] if ',' in line else line
+                    print(f"  {count+1}. {name}")
+                    count += 1
             
         else:
-            print("\n⚠  UYARI: Yeterli kanal bulunamadı!")
-            print("💡 İpucu: Daha fazla proxy eklemeyi deneyin veya internet bağlantınızı kontrol edin.")
+            print("\n❌ HATA: Hiç kanal bulunamadı!")
+            print("Lütfen scripti yeniden çalıştırın veya proxy ayarlarını kontrol edin.")
             
-        exit(0)
-        
     except KeyboardInterrupt:
-        print("\n\n⏹  İşlem kullanıcı tarafından durduruldu.")
-        exit(1)
+        print("\n⏹ İşlem durduruldu")
     except Exception as e:
         print(f"\n❌ Beklenmeyen hata: {e}")
-        exit(1)
+        import traceback
+        traceback.print_exc()
