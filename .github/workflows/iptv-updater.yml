@@ -26,7 +26,7 @@ jobs:
       run: pip install requests
 
     - name: Generate M3U
-      run: python deathless_proxy.py
+      run: python androvpnsiz.py
 
     - name: Commit M3U file
       run: |
