@@ -1,6 +1,6 @@
 #EXTM3U
 # DeaTHLesS IPTV - GitHub Actions
-# Generated: 2026-01-09 11:55:02
+# Generated: 2026-01-09 12:43:50
 # Base URL: https://andro.226503.xyz/checklist/
 
 #EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",beIN Sport 1 HD
@@ -8,7 +8,7 @@ https://andro.226503.xyz/checklist/androstreamlivebs1.m3u8
 #EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 2 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",beIN Sport 2 HD
 https://andro.226503.xyz/checklist/androstreamlivebs2.m3u8
 #EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 3 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",beIN Sport 3 HD
-https://hello-world-aged-resonance-fc8f.bokaflix.workers.dev/?apiUrl=https://andro.226503.xyz/checklist/androstreamlivebs3.m3u8
+https://andro.226503.xyz/checklist/androstreamlivebs3.m3u8
 #EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 4 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",beIN Sport 4 HD
 https://andro.226503.xyz/checklist/androstreamlivebs4.m3u8
 #EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 5 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",beIN Sport 5 HD
