@@ -1,23 +1,37 @@
 #EXTM3U
 # DeaTHLesS IPTV - GitHub Actions
-# Generated: 2026-01-27 02:13:35
-# Base URL: https://birazcikspor.xyz/checklist/
+# Generated: 2026-01-27 03:55:46
+# Base URL: https://andro.226503.xyz/checklist/
 
 #EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",beIN Sport 1 HD
-https://api.allorigins.win/raw?url=https%3A%2F%2Fbirazcikspor.xyz%2Fchecklist%2Fandrostreamlivebs1.m3u8
+https://andro.226503.xyz/checklist/androstreamlivebs1.m3u8
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 2 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",beIN Sport 2 HD
+https://andro.226503.xyz/checklist/androstreamlivebs2.m3u8
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 3 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",beIN Sport 3 HD
+https://andro.226503.xyz/checklist/androstreamlivebs3.m3u8
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 4 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",beIN Sport 4 HD
+https://andro.226503.xyz/checklist/androstreamlivebs4.m3u8
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:beIN Sport 5 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",beIN Sport 5 HD
+https://andro.226503.xyz/checklist/androstreamlivebs5.m3u8
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:S Sport 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",S Sport 1 HD
+https://andro.226503.xyz/checklist/androstreamlivess1.m3u8
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:S Sport 2 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",S Sport 2 HD
+https://andro.226503.xyz/checklist/androstreamlivess2.m3u8
 #EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tivibu Sport HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Tivibu Sport HD
-https://api.allorigins.win/raw?url=https%3A%2F%2Fbirazcikspor.xyz%2Fchecklist%2Fandrostreamlivets.m3u8
+https://andro.226503.xyz/checklist/androstreamlivets.m3u8
 #EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tivibu Sport 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Tivibu Sport 1 HD
-https://api.allorigins.win/raw?url=https%3A%2F%2Fbirazcikspor.xyz%2Fchecklist%2Fandrostreamlivets1.m3u8
+https://andro.226503.xyz/checklist/androstreamlivets1.m3u8
 #EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tivibu Sport 2 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Tivibu Sport 2 HD
-https://api.allorigins.win/raw?url=https%3A%2F%2Fbirazcikspor.xyz%2Fchecklist%2Fandrostreamlivets2.m3u8
+https://andro.226503.xyz/checklist/androstreamlivets2.m3u8
 #EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tabii HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Tabii HD
-https://api.allorigins.win/raw?url=https%3A%2F%2Fbirazcikspor.xyz%2Fchecklist%2Fandrostreamlivetb.m3u8
+https://andro.226503.xyz/checklist/androstreamlivetb.m3u8
 #EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Tabii 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Tabii 1 HD
-https://api.allorigins.win/raw?url=https%3A%2F%2Fbirazcikspor.xyz%2Fchecklist%2Fandrostreamlivetb1.m3u8
+https://andro.226503.xyz/checklist/androstreamlivetb1.m3u8
 #EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Exxen HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Exxen HD
-https://api.allorigins.win/raw?url=https%3A%2F%2Fbirazcikspor.xyz%2Fchecklist%2Fandrostreamliveexn.m3u8
+https://andro.226503.xyz/checklist/androstreamliveexn.m3u8
+#EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Exxen 1 HD" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Exxen 1 HD
+https://andro.226503.xyz/checklist/androstreamliveexn1.m3u8
 #EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Facebook beIN Sport 1" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Facebook beIN Sport 1
-https://api.allorigins.win/raw?url=https%3A%2F%2Fbirazcikspor.xyz%2Fchecklist%2Ffacebooklivebs1.m3u8
+https://andro.226503.xyz/checklist/facebooklivebs1.m3u8
 #EXTINF:-1 tvg-id="sport.tr" tvg-name="TR:Facebook S Sport 1" tvg-logo="https://i.hizliresim.com/8xzjgqv.jpg" group-title="TURKIYE",Facebook S Sport 1
-https://api.allorigins.win/raw?url=https%3A%2F%2Fbirazcikspor.xyz%2Fchecklist%2Ffacebooklivess1.m3u8
+https://andro.226503.xyz/checklist/facebooklivess1.m3u8
